@@ -915,10 +915,21 @@
   }
 }
 
+
+/* V0.10 — contact delivery status */
+.contact-status{
+  margin-top:14px;
+  min-height:20px;
+  font-size:13px;
+  color:var(--muted);
+}
+.contact-status.success{color:#245c3a}
+.contact-status.error{color:#8a2638}
+
 </style>
 </head>
 <body id="top">
-<div class="version-tag" aria-label="Version">V0.9</div>
+<div class="version-tag" aria-label="Version">V0.10</div>
 <header class="topbar">
   <div class="wrap nav">
     <a class="brand" href="#top" aria-label="NF Academy">
@@ -1171,8 +1182,7 @@
       <a class="contact-email" href="mailto:contact@nofiltr.fr">contact@nofiltr.fr</a>
     </div>
 
-    <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/?contact=sent#contact">
-      <input type="hidden" name="form-name" value="contact">
+    <form class="contact-form" name="contact" method="POST" action="/.netlify/functions/contact">
       <p class="honeypot" aria-hidden="true"><label>Ne pas remplir <input name="bot-field"></label></p>
 
       <div class="form-row">
@@ -1206,6 +1216,7 @@
         <button class="btn dark" type="submit" data-fr="Envoyer la demande" data-en="Send enquiry">Envoyer la demande</button>
         <span data-fr="Réponse par NF:ACADEMY · contact@nofiltr.fr" data-en="Reply from NF:ACADEMY · contact@nofiltr.fr">Réponse par NF:ACADEMY · contact@nofiltr.fr</span>
       </div>
+      <div class="contact-status" id="contact-status" role="status" aria-live="polite"></div>
     </form>
   </div>
 </section>
@@ -1233,6 +1244,21 @@
   buttons.forEach(btn=>btn.addEventListener('click',()=>setLang(btn.dataset.lang)));
   const saved=localStorage.getItem('nf-academy-lang');
   if(saved==='en') setLang('en');
+})();
+</script>
+<script id="contact-status-script">
+(function(){
+  var p = new URLSearchParams(window.location.search);
+  var s = document.getElementById('contact-status');
+  if (!s) return;
+  var lang = document.documentElement.lang || 'fr';
+  if (p.get('contact') === 'sent') {
+    s.className = 'contact-status success';
+    s.textContent = lang === 'en' ? 'Message sent. We will get back to you shortly.' : 'Message envoyé. Nous revenons vers vous rapidement.';
+  } else if (p.get('contact') === 'error') {
+    s.className = 'contact-status error';
+    s.textContent = lang === 'en' ? 'The message could not be sent. Please email us directly.' : 'Le message n’a pas pu être envoyé. Écrivez-nous directement par email.';
+  }
 })();
 </script>
 </body>

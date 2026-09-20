@@ -929,7 +929,7 @@
 </style>
 </head>
 <body id="top">
-<div class="version-tag" aria-label="Version">V0.11</div>
+<div class="version-tag" aria-label="Version">V0.12</div>
 <header class="topbar">
   <div class="wrap nav">
     <a class="brand" href="#top" aria-label="NF Academy">
@@ -1182,7 +1182,7 @@
       <a class="contact-email" href="mailto:contact@nofiltr.fr">contact@nofiltr.fr</a>
     </div>
 
-    <form class="contact-form" name="contact" method="POST" action="/.netlify/functions/contact">
+    <form class="contact-form" name="contact" method="POST" action="#" id="contact-form">
       <p class="honeypot" aria-hidden="true"><label>Ne pas remplir <input name="bot-field"></label></p>
 
       <div class="form-row">
@@ -1259,6 +1259,66 @@
     s.className = 'contact-status error';
     s.textContent = lang === 'en' ? 'The message could not be sent. Please email us directly.' : 'Le message n’a pas pu être envoyé. Écrivez-nous directement par email.';
   }
+})();
+</script>
+
+<script id="nf-contact-submit">
+(function(){
+  var form = document.getElementById('contact-form');
+  var status = document.getElementById('contact-status');
+  if (!form || !status) return;
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+
+    var button = form.querySelector('button[type="submit"]');
+    var original = button ? button.textContent : '';
+    if (button) {
+      button.disabled = true;
+      button.textContent = (document.documentElement.lang === 'en') ? 'Sending…' : 'Envoi…';
+    }
+
+    status.className = 'contact-status';
+    status.textContent = '';
+
+    var fd = new FormData(form);
+    var payload = {
+      name: fd.get('name') || '',
+      venue: fd.get('venue') || '',
+      email: fd.get('email') || '',
+      phone: fd.get('phone') || '',
+      message: fd.get('message') || '',
+      botField: fd.get('bot-field') || ''
+    };
+
+    try {
+      var res = await fetch('https://scfubcdsoacsmcwduhkl.supabase.co/functions/v1/nf-academy-contact', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify(payload)
+      });
+      var data = {};
+      try { data = await res.json(); } catch(_){}
+      if (!res.ok || !data.ok) throw new Error(data.error || 'SEND_FAILED');
+
+      status.className = 'contact-status success';
+      status.textContent = (document.documentElement.lang === 'en')
+        ? 'Message sent. We will get back to you shortly.'
+        : 'Message envoyé. Nous revenons vers vous rapidement.';
+      form.reset();
+      if (history && history.replaceState) history.replaceState({}, '', '#contact');
+    } catch(err) {
+      status.className = 'contact-status error';
+      status.textContent = (document.documentElement.lang === 'en')
+        ? 'The message could not be sent. Please email us directly.'
+        : 'Le message n’a pas pu être envoyé. Écrivez-nous directement par email.';
+    } finally {
+      if (button) {
+        button.disabled = false;
+        button.textContent = original;
+      }
+    }
+  });
 })();
 </script>
 </body>

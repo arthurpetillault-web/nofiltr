@@ -6,3 +6,9 @@
 
 
 # beta deploy trigger 2
+
+
+[context.branch-deploy]
+  publish = "."
+
+# force beta branch deploy 1789906161625

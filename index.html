@@ -183,7 +183,42 @@
       .visual-shot-main,.visual-shot-side{height:360px}
     }
 
-  </style>
+  
+/* HERO REWORK v2 */
+.hero{padding:56px 0 84px;background:#f2eee7;overflow:hidden;min-height:auto}
+.hero:after{display:none}
+.hero-shell{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(360px,.92fr);align-items:end;gap:0;min-height:680px}
+.hero-photo{grid-column:2;grid-row:1;position:relative;margin:0;height:640px;overflow:hidden;background:#111;z-index:1;margin-top:-28px}
+.hero-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.hero-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 50%,rgba(0,0,0,.55) 100%)}
+.hero-photo figcaption{position:absolute;left:22px;bottom:18px;z-index:2;color:#fff;font:400 18px/1.1 var(--serif);max-width:230px}
+.hero-copy{grid-column:1 / span 2;grid-row:1;position:relative;z-index:3;max-width:760px;padding:78px 0 0}
+.hero h1{font-size:clamp(44px,5vw,78px);line-height:.95;letter-spacing:-.05em;max-width:760px;margin:20px 0 24px}
+.hero-lead{max-width:620px;font-size:clamp(18px,1.5vw,22px);color:#2d2924}
+.hero-actions{margin-top:30px}
+.hero .pillrow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 22px;max-width:845px;margin-top:42px;padding-right:220px;border-top:0}
+.hero .pill{border:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);border-radius:0;background:transparent;padding:12px 0;font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+.hero .pill:nth-child(even){padding-left:0;border-left:0}
+.hero .pill:last-child{grid-column:1 / 2}
+@media(max-width:1100px){
+  .hero-shell{grid-template-columns:minmax(0,1fr) 360px;min-height:620px}
+  .hero-copy{max-width:700px}
+  .hero .pillrow{padding-right:160px}
+}
+@media(max-width:900px){
+  .hero{padding:48px 0 60px}
+  .hero-shell{grid-template-columns:1fr;gap:26px;min-height:auto}
+  .hero-photo{grid-column:1;grid-row:2;height:460px;margin-top:0}
+  .hero-copy{grid-column:1;grid-row:1;max-width:none;padding-top:0}
+  .hero .pillrow{padding-right:0;max-width:none}
+}
+@media(max-width:560px){
+  .hero h1{font-size:44px}
+  .hero-photo{height:380px}
+  .hero .pillrow{grid-template-columns:1fr}
+}
+
+</style>
 </head>
 <body id="top">
 <header class="topbar">
@@ -206,6 +241,11 @@
 <main>
 <section class="hero">
   <div class="wrap hero-shell">
+    <figure class="hero-photo">
+      <img src="https://images.unsplash.com/photo-1765662120818-26dd0d6e6230?auto=format&fit=crop&w=1600&q=82" alt="Intérieur d’un bar à vins" fetchpriority="high">
+      <figcaption data-fr="Le terrain avant les recettes." data-en="Reality before prescriptions.">Le terrain avant les recettes.</figcaption>
+    </figure>
+
     <div class="hero-copy">
       <div class="eyebrow" data-fr="Conseil · Audit · Formation · Accompagnement" data-en="Consulting · Audit · Training · Support">Conseil · Audit · Formation · Accompagnement</div>
       <h1 data-fr="Faire progresser les équipes. Fluidifier le service. Développer la performance." data-en="Develop the team. Sharpen the service. Grow performance.">Faire progresser les équipes. Fluidifier le service. Développer la performance.</h1>
@@ -222,10 +262,6 @@
         <span class="pill" data-fr="Identité & communication" data-en="Brand & communication">Identité & communication</span>
       </div>
     </div>
-    <figure class="hero-photo">
-      <img src="https://images.unsplash.com/photo-1765662120818-26dd0d6e6230?auto=format&fit=crop&w=1600&q=82" alt="Intérieur d’un bar à vins" fetchpriority="high">
-      <figcaption data-fr="Le terrain avant les recettes." data-en="Reality before prescriptions.">Le terrain avant les recettes.</figcaption>
-    </figure>
   </div>
 </section>
 

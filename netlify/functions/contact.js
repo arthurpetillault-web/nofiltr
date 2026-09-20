@@ -1,13 +1,14 @@
-exports.handler = async (event) => {
-  if (event.httpMethod !== "POST") {
-    return {
-      statusCode: 405,
-      headers: { Allow: "POST" },
-      body: "Method Not Allowed"
-    };
+export default async (req) => {
+  if (req.method !== "POST") {
+    return new Response("Method Not Allowed", {
+      status: 405,
+      headers: { Allow: "POST" }
+    });
   }
 
-  const params = new URLSearchParams(event.body || "");
+  const body = await req.text();
+  const params = new URLSearchParams(body);
+
   const name = (params.get("name") || "").trim();
   const venue = (params.get("venue") || "").trim();
   const email = (params.get("email") || "").trim();
@@ -15,30 +16,19 @@ exports.handler = async (event) => {
   const message = (params.get("message") || "").trim();
   const bot = (params.get("bot-field") || "").trim();
 
-  if (bot) {
-    return {
-      statusCode: 302,
-      headers: { Location: "/?contact=sent#contact" },
-      body: ""
-    };
-  }
+  const redirect = (state) =>
+    new Response(null, {
+      status: 302,
+      headers: { Location: `/?contact=${state}#contact` }
+    });
 
-  if (!name || !email || !message) {
-    return {
-      statusCode: 302,
-      headers: { Location: "/?contact=error#contact" },
-      body: ""
-    };
-  }
+  if (bot) return redirect("sent");
+  if (!name || !email || !message) return redirect("error");
 
-  const apiKey = process.env.RESEND_API_KEY;
+  const apiKey = Netlify.env.get("RESEND_API_KEY");
   if (!apiKey) {
     console.error("Missing RESEND_API_KEY");
-    return {
-      statusCode: 302,
-      headers: { Location: "/?contact=error#contact" },
-      body: ""
-    };
+    return redirect("error");
   }
 
   const esc = (value) => String(value)
@@ -49,6 +39,7 @@ exports.handler = async (event) => {
     .replace(/'/g, "&#039;");
 
   const subjectVenue = venue ? " · " + venue : "";
+
   const html = `<!doctype html>
 <html>
   <body style="font-family:Arial,sans-serif;color:#171717;line-height:1.55">
@@ -80,26 +71,13 @@ exports.handler = async (event) => {
     });
 
     if (!response.ok) {
-      const errorText = await response.text();
-      console.error("Resend error:", response.status, errorText);
-      return {
-        statusCode: 302,
-        headers: { Location: "/?contact=error#contact" },
-        body: ""
-      };
+      console.error("Resend error", response.status, await response.text());
+      return redirect("error");
     }
 
-    return {
-      statusCode: 302,
-      headers: { Location: "/?contact=sent#contact" },
-      body: ""
-    };
+    return redirect("sent");
   } catch (error) {
-    console.error("Contact form error:", error);
-    return {
-      statusCode: 302,
-      headers: { Location: "/?contact=error#contact" },
-      body: ""
-    };
+    console.error("Contact form error", error);
+    return redirect("error");
   }
 };

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#111111">
+  <title>E•BOOKS — NF:ACADEMY</title>
+  <meta name="description" content="Les e-books NF:ACADEMY : guides pratiques pour les professionnels de la restauration, du management, de la vente et de l'expérience client.">
+  <style>
+    :root{--ink:#111;--paper:#f2eee7;--white:#fff;--muted:#6d6861;--line:#cfc7bd;--wine:#6b2332;--soft:#e8e0d5;--max:1240px;--serif:Georgia,"Times New Roman",serif;--sans:Arial,Helvetica,sans-serif}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55}a{color:inherit;text-decoration:none}.wrap{width:min(calc(100% - 48px),var(--max));margin:auto}
+    .topbar{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line)}
+    .nav{height:88px;display:flex;align-items:center;justify-content:space-between;gap:28px}
+    .brand{font:400 26px/1 var(--serif);letter-spacing:.08em}.brand small{display:block;font:700 9px/1.2 var(--sans);letter-spacing:.2em;margin-top:5px}
+    .navlinks{display:flex;align-items:center;gap:25px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700}.navlinks>a{position:relative;padding:10px 0}.navlinks>a:after{content:"";position:absolute;left:0;right:100%;bottom:4px;height:1px;background:var(--ink);transition:.25s}.navlinks>a:hover:after,.navlinks>a.active:after{right:0}
+    .lang{display:flex;border:1px solid var(--ink);border-radius:999px;overflow:hidden}.lang button{border:0;background:transparent;padding:8px 11px;font:700 10px/1 var(--sans);cursor:pointer}.lang button.active{background:var(--ink);color:#fff}
+    .hero{padding:92px 0 72px;background:#111;color:var(--paper);position:relative;overflow:hidden}.hero:after{content:"E•";position:absolute;right:3vw;top:-35px;font:400 240px/.9 var(--serif);color:rgba(255,255,255,.035);pointer-events:none}
+    .eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:#d9a8b2}.hero h1{font:400 clamp(56px,7vw,96px)/.92 var(--serif);letter-spacing:-.055em;margin:20px 0 24px}.hero p{max-width:760px;margin:0;color:#d8d2ca;font-size:clamp(18px,1.8vw,24px)}
+    .intro{padding:70px 0 42px;border-bottom:1px solid var(--line)}.intro-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:80px}.kicker{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--wine)}h2{font:400 clamp(38px,4vw,58px)/1 var(--serif);letter-spacing:-.035em;margin:14px 0 0}.intro-copy{font-family:var(--serif);font-size:clamp(24px,2.5vw,36px);line-height:1.18}
+    .catalogue{padding:56px 0 100px}.grid{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--ink);border-left:1px solid var(--ink)}
+    .ebook{min-height:290px;border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:30px;position:relative;display:flex;flex-direction:column;transition:.2s}.ebook:hover{background:#fff}.ebook .num{font:400 54px/.9 var(--serif);color:var(--wine);margin-bottom:28px}.ebook h3{font:400 34px/1.02 var(--serif);margin:0 0 14px;max-width:520px}.ebook p{margin:0;color:var(--muted);max-width:560px}.ebook .tag{margin-top:auto;padding-top:30px;font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--wine)}
+    .cta{background:#fff;border-top:1px solid var(--line);padding:86px 0 96px}.cta-inner{display:grid;grid-template-columns:1fr auto;gap:50px;align-items:end}.cta h2{max-width:760px}.cta p{color:var(--muted);max-width:640px;margin:18px 0 0}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border:1px solid var(--ink);background:var(--ink);color:#fff;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+    footer{background:#fff;border-top:1px solid var(--line);padding:28px 0}.footer-row{display:flex;justify-content:space-between;gap:20px;align-items:center;font-size:12px;color:var(--muted)}
+    .version-tag{position:fixed;right:14px;bottom:12px;z-index:90;font:700 9px/1 var(--sans);letter-spacing:.12em;color:rgba(17,17,17,.42);background:rgba(242,238,231,.76);border:1px solid rgba(17,17,17,.12);padding:6px 7px 5px;backdrop-filter:blur(8px);pointer-events:none}
+    @media(max-width:900px){.wrap{width:min(calc(100% - 30px),var(--max))}.navlinks>a:not(.active){display:none}.intro-grid,.cta-inner{grid-template-columns:1fr;gap:28px}.grid{grid-template-columns:1fr}.hero{padding:72px 0 58px}}
+    @media(max-width:560px){.nav{height:72px}.brand{font-size:21px}.hero h1{font-size:54px}.ebook{min-height:250px;padding:24px}.ebook h3{font-size:30px}.footer-row{align-items:flex-start;flex-direction:column}}
+  </style>
+</head>
+<body>
+<div class="version-tag">V0.13</div>
+<header class="topbar">
+  <div class="wrap nav">
+    <a class="brand" href="/" aria-label="NF Academy">NO FILTER<small>ACADEMY</small></a>
+    <nav class="navlinks" aria-label="Navigation">
+      <a href="/#approche" data-fr="Approche" data-en="Approach">Approche</a>
+      <a href="/#offres" data-fr="Offres" data-en="Offers">Offres</a>
+      <a href="/#methode" data-fr="Méthode" data-en="Method">Méthode</a>
+      <a class="active" href="/ebooks/" data-fr="E•BOOKS" data-en="E•BOOKS">E•BOOKS</a>
+      <a href="/#contact" data-fr="Contact" data-en="Contact">Contact</a>
+      <div class="lang"><button class="active" data-lang="fr" type="button">FR</button><button data-lang="en" type="button">EN</button></div>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow" data-fr="Ressources NF:ACADEMY" data-en="NF:ACADEMY resources">Ressources NF:ACADEMY</div>
+    <h1>E•BOOKS</h1>
+    <p data-fr="Des guides pratiques conçus pour transformer une problématique de terrain en repères clairs, méthodes simples et actions directement applicables." data-en="Practical guides designed to turn real operational challenges into clear principles, simple methods and immediately applicable actions.">Des guides pratiques conçus pour transformer une problématique de terrain en repères clairs, méthodes simples et actions directement applicables.</p>
+  </div>
+</section>
+<section class="intro">
+  <div class="wrap intro-grid">
+    <div><div class="kicker" data-fr="La collection" data-en="The collection">La collection</div><h2 data-fr="10 guides disponibles." data-en="10 guides available.">10 guides disponibles.</h2></div>
+    <div class="intro-copy" data-fr="Chaque e-book part d’un sujet concret et va à l’essentiel : comprendre, agir, appliquer, puis approfondir." data-en="Each e-book starts from a concrete challenge and focuses on what matters: understand, act, apply, then go deeper.">Chaque e-book part d’un sujet concret et va à l’essentiel : comprendre, agir, appliquer, puis approfondir.</div>
+  </div>
+</section>
+<section class="catalogue">
+  <div class="wrap">
+    <div class="grid">
+      <article class="ebook"><div class="num">01</div><h3 data-fr="Le guide de la vente" data-en="The sales guide">Le guide de la vente</h3><p data-fr="Vendre mieux en salle, sans forcer : lire la table, conseiller au bon moment et développer la performance commerciale." data-en="Sell better without pressure: read the table, advise at the right moment and grow commercial performance.">Vendre mieux en salle, sans forcer : lire la table, conseiller au bon moment et développer la performance commerciale.</p><div class="tag">NF:ACADEMY · E•BOOK</div></article>
+      <article class="ebook"><div class="num">02</div><h3 data-fr="Ouvrir son restaurant" data-en="Opening a restaurant">Ouvrir son restaurant</h3><p data-fr="Passer de l’idée à un projet structuré, réaliste et prêt à être lancé : concept, modèle économique, organisation et ouverture." data-en="Turn an idea into a structured, realistic project ready to launch: concept, business model, operations and opening.">Passer de l’idée à un projet structuré, réaliste et prêt à être lancé : concept, modèle économique, organisation et ouverture.</p><div class="tag">NF:ACADEMY · E•BOOK</div></article>
+      <article class="ebook"><div class="num">03</div><h3 data-fr="Le guide du végétal" data-en="The plant-based guide">Le guide du végétal</h3><p data-fr="Végétaliser sa cuisine sans perdre en gourmandise, en cohérence culinaire ni en rentabilité." data-en="Bring more plant-based cooking to the menu without losing indulgence, culinary coherence or profitability.">Végétaliser sa cuisine sans perdre en gourmandise, en cohérence culinaire ni en rentabilité.</p><div class="tag">NF:ACADEMY · E•BOOK</div></article>
+      <article class="ebook"><div class="num">04</div><h3 data-fr="La carte des vins" data-en="The wine list">La carte des vins</h3><p data-fr="Construire une carte lisible, cohérente, rentable et facile à vendre au quotidien." data-en="Build a wine list that is clear, coherent, profitable and easy to sell every day.">Construire une carte lisible, cohérente, rentable et facile à vendre au quotidien.</p><div class="tag">NF:ACADEMY · E•BOOK</div></article>
+      <article class="ebook"><div class="num">05</div><h3 data-fr="Les accords mets & vins" data-en="Food & wine pairing">Les accords mets & vins</h3><p data-fr="Conseiller avec justesse, raisonner par sensations et construire des accords sans complexifier le service." data-en="Advise with precision, reason through sensations and build pairings without making service more complex.">Conseiller avec justesse, raisonner par sensations et construire des accords sans complexifier le service.</p><div class="tag">NF:ACADEMY · E•BOOK</div></article>
+      <article class="ebook"><div class="num">06</div><h3 data-fr="Les accords sans alcool" data-en="Non-alcoholic pairings">Les accords sans alcool</h3><p data-fr="Créer des boissons et accords sans alcool précis, gourmands et pensés comme une véritable expérience gastronomique." data-en="Create precise, indulgent non-alcoholic drinks and pairings designed as a true gastronomic experience.">Créer des boissons et accords sans alcool précis, gourmands et pensés comme une véritable expérience gastronomique.</p><div class="tag">NF:ACADEMY · E•BOOK</div></article>
+      <article class="ebook"><div class="num">07</div><h3 data-fr="Le guide de la créativité" data-en="The creativity guide">Le guide de la créativité</h3><p data-fr="Sortir des automatismes, produire davantage d’idées, sélectionner les bonnes pistes et les tester rapidement." data-en="Break out of routines, generate more ideas, select the right directions and test them quickly.">Sortir des automatismes, produire davantage d’idées, sélectionner les bonnes pistes et les tester rapidement.</p><div class="tag">NF:ACADEMY · E•BOOK</div></article>
+      <article class="ebook"><div class="num">08</div><h3 data-fr="Le guide du positionnement" data-en="The positioning guide">Le guide du positionnement</h3><p data-fr="Clarifier sa singularité, comprendre sa clientèle et construire une promesse crédible et différenciante." data-en="Clarify what makes you distinctive, understand your audience and build a credible, differentiated promise.">Clarifier sa singularité, comprendre sa clientèle et construire une promesse crédible et différenciante.</p><div class="tag">NF:ACADEMY · E•BOOK</div></article>
+      <article class="ebook"><div class="num">09</div><h3 data-fr="Le guide du codéveloppement" data-en="The peer development guide">Le guide du codéveloppement</h3><p data-fr="Résoudre des problématiques concrètes grâce à l’écoute, au questionnement et à l’intelligence collective." data-en="Solve concrete professional challenges through listening, questioning and collective intelligence.">Résoudre des problématiques concrètes grâce à l’écoute, au questionnement et à l’intelligence collective.</p><div class="tag">NF:ACADEMY · E•BOOK</div></article>
+      <article class="ebook"><div class="num">10</div><h3 data-fr="Le guide du coaching" data-en="The coaching guide">Le guide du coaching</h3><p data-fr="Clarifier un objectif, expérimenter de nouvelles pratiques, mesurer les progrès et renforcer l’autonomie." data-en="Clarify an objective, experiment with new practices, measure progress and strengthen autonomy.">Clarifier un objectif, expérimenter de nouvelles pratiques, mesurer les progrès et renforcer l’autonomie.</p><div class="tag">NF:ACADEMY · E•BOOK</div></article>
+    </div>
+  </div>
+</section>
+<section class="cta">
+  <div class="wrap cta-inner">
+    <div><div class="kicker">NF:ACADEMY</div><h2 data-fr="Besoin d’aller plus loin sur l’un de ces sujets ?" data-en="Want to go further on one of these topics?">Besoin d’aller plus loin sur l’un de ces sujets ?</h2><p data-fr="Les e-books donnent des repères. L’accompagnement NF:ACADEMY permet de les adapter à la réalité de votre établissement et de vos équipes." data-en="The e-books provide a framework. NF:ACADEMY support adapts it to the reality of your venue and your team.">Les e-books donnent des repères. L’accompagnement NF:ACADEMY permet de les adapter à la réalité de votre établissement et de vos équipes.</p></div>
+    <a class="btn" href="/#contact" data-fr="Parler de mon établissement" data-en="Discuss my venue">Parler de mon établissement</a>
+  </div>
+</section>
+</main>
+<footer><div class="wrap footer-row"><a href="mailto:contact@nofiltr.fr">contact@nofiltr.fr</a><span>© 2026 NF:ACADEMY · <span data-fr="Tous droits réservés" data-en="All rights reserved">Tous droits réservés</span></span></div></footer>
+<script>
+(() => {
+  const buttons=[...document.querySelectorAll('[data-lang]')];
+  function setLang(lang){
+    document.documentElement.lang=lang;
+    document.querySelectorAll('[data-fr][data-en]').forEach(el=>{el.textContent=el.dataset[lang]});
+    buttons.forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===lang));
+    localStorage.setItem('nf-academy-lang',lang);
+  }
+  buttons.forEach(btn=>btn.addEventListener('click',()=>setLang(btn.dataset.lang)));
+  const saved=localStorage.getItem('nf-academy-lang'); if(saved==='en') setLang('en');
+})();
+</script>
+</body>
+</html>
